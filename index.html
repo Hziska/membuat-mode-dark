@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>cuy university sesi 6</title>
+</head>
+<body >
+    
+<div class="container">
+    
+    <nav>
+        <a id="home" onclick="refresh()">Home</a>
+        <a id="mode" onclick="darkMode()" id="mode">Mode Dark</a>
+        <a id="sky" onclick="skyMode()" id="mode">Mode SKY</a>
+        
+    </nav>
+
+    <h2>cuy university sesi 6</h2>
+    <p id="info"></p>
+</div>
+
+
+<script>
+    let body = document.body;
+    let info = document.getElementById('info')
+    let mode = document.getElementById('mode')
+    let home = document.getElementById('home')
+
+    const limit = 5;
+    let jmlKlik = 0;
+    let sisa;
+
+    function darkMode(){
+        body.classList.remove('sky')
+        if(sisa == 1){
+            info.textContent='jatah dark mode anda habis'
+            mode.style.display='none'
+            home.textContent= 'ULANG'
+            return;
+        }
+
+       
+        if(jmlKlik==0){
+            mode.textContent='Mode Light'
+            body.classList.add('dark')
+        }else if(jmlKlik==1){
+            mode.textContent='Mode Dark'
+            body.classList.remove('dark')
+        }else if(jmlKlik==2){
+            mode.textContent='Mode Light'
+            body.classList.add('dark')
+        }else if(jmlKlik==3){
+            mode.textContent='Mode Dark'
+            body.classList.remove('dark')
+        }
+
+        jmlKlik++;
+        sisa = limit - jmlKlik
+
+        //ubah kata
+        info.textContent=`kamu telah memakai dark mode sebanyak ${jmlKlik}x, tersisa${sisa}`
+    }
+
+    function skyMode(){
+        body.classList.remove('dark')
+        body.classList.toggle('sky')
+    }
+
+    function refresh(){
+        location.reload()
+    }
+
+</script>
+</body>
+</html>
